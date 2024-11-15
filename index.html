@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EV Charging Station Finder</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<div id="login-container" class="login-container">
+
+  <div class="login-box">
+    <div id="welcome-text" class="welcome-text">
+      WELCOME TO CHARGEX!
+    </div>
+    <h2>Login to EV Charging Station Finder</h2>
+    <form id="login-form" onsubmit="return login(event)">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<body>
+  <div id="app-container" class="container hidden">
+    <header>
+      <div class="header-content">
+        <div class="company-name">
+          <img src="images/logo.jpg" alt="Company Logo" class="company-logo">
+          <span class="charge">Charge</span><span class="x">X</span>
+        </div>
+        <h1>EV Charging Station Finder</h1>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="location" placeholder="Enter your location">
+        <button onclick="findStations()">Find Stations</button>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+
+    </header>
+
+    <main>
+      <div id="map"></div>
+      <div id="station-list">
+        <h2>Nearby Charging Stations</h2>
+        <div id="stations"></div>
+      </div>
+    </main>
+
+    <div id="about-container" class="about-container">
+      <h2>About Our Partners</h2>
+      <div class="brands">
+        <div class="brand">
+          <img src="Ather_Energy.jpg" alt="Ather Logo" class="brand-logo">
+          <p><strong>Ather:</strong> A leading electric scooter company, Ather Energy has developed a robust charging
+            network, the Ather Grid, providing fast and reliable EV charging across urban centers.</p>
+        </div>
+        <div class="brand">
+          <img src="Chargezone.png" alt="ChargeZone Logo" class="brand-logo">
+          <p><strong>ChargeZone:</strong> Known for high-speed and efficient charging, ChargeZone aims to make EV
+            charging accessible nationwide with reliable infrastructure and services.</p>
+        </div>
+        <div class="brand">
+          <img src="Tata_Power_Logo.png" alt="Tata Power Logo" class="brand-logo">
+          <p><strong>Tata Power:</strong> One of India’s largest integrated power companies, Tata Power provides
+            comprehensive charging solutions across residential and public spaces for EV users.</p>
+        </div>
+        <div class="brand">
+          <img src="BESCON.jpg" alt="BESCOM Logo" class="brand-logo">
+          <p><strong>BESCOM:</strong> Bangalore Electricity Supply Company (BESCOM) offers dedicated EV charging
+            stations in Bangalore, making EV charging accessible and affordable.</p>
+        </div>
+        <div class="brand">
+          <img src="Indian_Oil_Logo.svg.png" alt="Indian Oil Logo" class="brand-logo">
+          <p><strong>IICLCP:</strong> Indian Oil Corporation Limited (IOCL) offers EV charging stations at fuel outlets
+            nationwide, supporting India's shift to electric mobility with accessible and reliable infrastructure.</p>
+        </div>
+      </div>
+      <div id="rate-us-form" class="rate-us-form">
+        <h2>Rate Us</h2>
+        <p>We value your feedback! Please rate your experience with our service.</p>
+        <div class="stars">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+        <textarea id="feedback" placeholder="Leave your comments here..." rows="4"></textarea>
+        <button onclick="submitFeedback()">Submit Feedback</button>
+      </div>
+      <div id="thank-you-message" class="thank-you-message hidden">
+        Thank you for your feedback!
+      </div>
+    </div>
+    <div class="info-container">
+      <div class="slogan-section">
+        <h2><i class="fas fa-bolt"></i> Drive Clean, Charge Fast! <i class="fas fa-leaf"></i></h2>
+        <p>Powering the future of sustainable transportation</p>
+      </div>
+
+      <div class="support-section">
+        <h3>24/7 Support</h3>
+        <div class="support-info">
+          <div class="phone-number">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+919482108230">+91 952 356 5296</a>
+          </div>
+          <div class="emergency">
+            <i class="fas fa-ambulance"></i>
+            <a href="tel:108">Emergency: 108</a>
+          </div>
+        </div>
+        <div class="quick-help">
+          <button onclick="showHelp('charging')" class="help-btn">
+            <i class="fas fa-charging-station"></i> Charging Help
+          </button>
+          <button onclick="showHelp('payment')" class="help-btn">
+            <i class="fas fa-credit-card"></i> Payment Issues
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+  <div id="feedback-popup" class="popup hidden">
+    <div class="popup-content">
+      <h3>Thank You!</h3>
+      <p>Your feedback is greatly appreciated.</p>
+      <button id="close-popup" class="popup-close-btn">Close</button>
+    </div>
+  </div>
+
+  
+  <script type="module" src="/main.js"></script>
+</body>
+</div>
+</html>
